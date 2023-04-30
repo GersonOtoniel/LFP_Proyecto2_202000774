@@ -1,0 +1,18 @@
+
+use('cali');
+
+db.createCollection('Coleccion1');
+
+db.createCollection('Coleccion2');
+
+db.createCollection('Coleccion3');
+
+db.Coleccion1.insertOne("{"id": 1,"nombre": "Calificacion 1","anio": 2023,"curso": "Lenguajes Formales y de Programacion"}");
+
+db.Coleccion1.insertOne("{"id": 1,"nombre": "Calificacion 2","anio": 2023,"curso": "Introduccion a la Programacion 2"}");
+
+db.Coleccion2.drop();
+
+db.Coleccion1.deleteOne("{"id" : 2}");
+
+db.Coleccion1.find();

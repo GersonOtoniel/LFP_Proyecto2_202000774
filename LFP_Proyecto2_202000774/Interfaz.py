@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from Analizador_lexico import Analizador
 from Lista import Lista
+from Analizador_sintactico import Sintactico
 
 class Interfaz:
     def __init__(self):
@@ -16,7 +17,7 @@ class Interfaz:
     def componenentes(self):
         self.texto_derecho = Text(self.pantalla_principal)
         self.texto_derecho.config(height=20, width=48, bg='#131718', border=0, fg='#ffffff', 
-                                  insertbackground='white', font=('Arial',14))
+                                  insertbackground='white', font=('Arial',14), padx=11)
         self.texto_derecho.place(x=725,y=120)
         #-------------------------------Aqui irá el código
         self.texto_izquierdo = Text(self.pantalla_principal)
@@ -47,23 +48,27 @@ class Interfaz:
 
     def TablaTokens(self):
         pantalla_tokens = Tk()
-        pantalla_tokens.geometry('550x450')
+        pantalla_tokens.geometry('750x550')
         pantalla_tokens.config(bg='#313131')
         tabla = ttk.Treeview(pantalla_tokens, columns=('col1','col2'))
         tabla.column('#0',width=80, anchor='center')
         tabla.column('#1',width=170, anchor='center')
-        tabla.column('#2',width=170, anchor='center')
+        tabla.column('#2',width=270, anchor='center')
         tabla.heading('#0', text='Número', anchor='center')
         tabla.heading('#1', text='Token', anchor='center')
         tabla.heading('#2', text='Lexema', anchor='center')
-        tabla.config(height=20)
-        tabla.pack(padx=20, pady=20)
+        scrollbar = ttk.Scrollbar(pantalla_tokens,orient=VERTICAL, command=tabla.yview)
+        tabla.config(yscrollcommand=scrollbar.set, height=30)
+        scrollbar.place(x=635, y=30, height=490)
+        #tabla.config(height=20)
+        tabla.pack(padx=20, pady=30)
 
-        actual = self.compilar.lista.primero
+        actual = self.compilar.compilar.lista.primero
         count = 0
         while actual!=None:
             count+=1
             tabla.insert('',END,text=count, values=(actual.dato.Token,actual.dato.Lexema))
+            print(actual.dato.Token+ '----------->' +actual.dato.Lexema)
             actual = actual.siguiente
 
 
@@ -85,14 +90,20 @@ class Interfaz:
         tabla.config(height=20)
         tabla.pack(padx=20,pady=20)
         
-        actual = self.compilar.lista_errores.primero
+        actual = self.compilar.compilar.lista_errores.primero
         while actual!= None:
             tabla.insert('',END,text=actual.dato.tipo, values=(actual.dato.linea, actual.dato.columna,actual.dato.token, actual.dato.descripcion))
             actual = actual.siguiente
     #///////////////////////////////////////////////////////////////////////////////////////////////////////////
     def analizar(self):
-        self.compilar = Analizador()
-        self.compilar.Analizar(self.texto_izquierdo.get(1.0,END))
+        self.compilar = Sintactico()
+        self.compilar.compila(self.texto_izquierdo.get(1.0,END))
+        if self.compilar.compilar.lista_errores.tamaño > 0 or self.compilar.compilar.lista_errores.tamaño==0:
+            #self.compilar.Sintactico()
+            self.texto_derecho.delete(1.0,[END])
+            self.texto_derecho.insert(1.0,self.compilar.doc)
+            
+        
         #self.compilar.lista.imprimir()
 
 
@@ -103,8 +114,6 @@ class Interfaz:
 
     def Salir(self):
         self.pantalla_principal.destroy()    
-        
-        #print(texto)
 
 
 
