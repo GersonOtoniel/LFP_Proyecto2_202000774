@@ -2,7 +2,7 @@ Universidad de San Carlos de Guatemala
 Facultad de Ingeniería
 Lenguajes Formales y de programacion
 
-<br>![logo](/Manuales/Image/img1.jpg)
+<br>![logo](Image/img1.jpg)
 
 ###<br><center>Manual de usuario </center>
 
