@@ -13,6 +13,8 @@ db.Coleccion1.insertOne("{"id": 1,"nombre": "Calificacion 2","anio": 2023,"curso
 
 db.Coleccion2.drop();
 
+db.Coleccion1.updateOne("{"id" : 1},{$set: {"curso": "Oficialmente estoy en Compi 1"}}");
+
 db.Coleccion1.deleteOne("{"id" : 2}");
 
 db.Coleccion1.find();

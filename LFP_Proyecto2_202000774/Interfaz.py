@@ -3,6 +3,8 @@ from tkinter import ttk
 from Analizador_lexico import Analizador
 from Lista import Lista
 from Analizador_sintactico import Sintactico
+from tkinter.filedialog import askopenfilename, asksaveasfile
+import tkinter.messagebox
 
 class Interfaz:
     def __init__(self):
@@ -34,8 +36,8 @@ class Interfaz:
         #--------------------------------------------
         self.filemenu = Menu(self.menu1, tearoff=0)
         self.filemenu.add_command(label='Nuevo')
-        self.filemenu.add_command(label='Abrir')
-        self.filemenu.add_command(label='Guardar')
+        self.filemenu.add_command(label='Abrir', command=self.Abrir)
+        self.filemenu.add_command(label='Guardar', command=self.Guardar)
         self.filemenu.add_command(label='Guardar Como')
         self.filemenu.add_command(label='Salir', command=self.Salir)
         #--------------------------------------------
@@ -115,6 +117,39 @@ class Interfaz:
     def Salir(self):
         self.pantalla_principal.destroy()    
 
+    def Abrir(self):
+        try:
+            self.file = askopenfilename(title='Cargar Archivo',filetypes=[("Archivos", f'*')])
+            abrir = open(self.file)
+            archivo = abrir.read()
+            self.texto_izquierdo.delete(1.0,END)
+            self.texto_izquierdo.insert(1.0, archivo)
+        except:
+            tkinter.messagebox.showerror('Guardado', 'Ningpun archivo cargado')
 
+
+
+
+    def Nuevo(self):
+        texto = self.texto_izquierdo.get(1.0,[END])
+        if texto == None or texto=='':
+            self.texto_izquierdo.delete(1.0,[END])
+        if texto!='':
+            self.GuardarComo()
+
+
+    def Guardar(self):
+        text = self.texto_izquierdo.get(1.0,[END])
+        fichero = open(self.file,'w+')
+        fichero.write(text)
+        fichero.close()
+
+
+    def GuardarComo(self):
+        nuevo_Archivo = asksaveasfile(title='Guardar Archivo Como', filetypes=(('Archivos', '*'),))
+        if nuevo_Archivo:
+            texto = self.texto_izquierdo.get(1.0,[END])
+            nuevo_Archivo.write(texto)
+            nuevo_Archivo.close()
 
 inter = Interfaz()

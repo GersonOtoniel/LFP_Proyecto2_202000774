@@ -196,7 +196,7 @@ class Sintactico:
         aceptar = 0
         for i in self.ActualizarU:
             char = self.compilar.lista.indexar(k).Lexema
-            if self.compilar.lista.indexar(k).Lexema == i and self.compilar.lista.indexar(k).Token==i or self.compilar.lista.indexar(k).Lexema in i:
+            if self.compilar.lista.indexar(k).Lexema == i or self.compilar.lista.indexar(k).Token==i or self.compilar.lista.indexar(k).Lexema in i:
                 if self.compilar.lista.indexar(k).Token=='STRING' and string1==1:
                     json = self.compilar.lista.indexar(k).Lexema
                 if self.compilar.lista.indexar(k).Token=='STRING' and string1==0:
