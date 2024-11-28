@@ -1,0 +1,11 @@
+---Esto es un comentario de una sola línea
+
+/*
+Esto es un comentario
+de varias
+lineas
+*/
+
+CrearBD base1 = nueva CrearBD();
+
+EliminarBD eliminarbase1 = nueva EliminarBD('base45');
