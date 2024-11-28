@@ -3,7 +3,7 @@ from ErrorLexico import Error
 
 class Sintactico:
     def __init__(self) -> None:
-        
+        #Estructuras que se utilizaran para comparar las entradas del analizado lexico con la estructura que deberian de llevar esas entradas
         comillas = ['\'','\"']
         self.CrearBD = ['CrearBD','RID','=' ,'nueva', 'CrearBD','(',')',';']
         self.EliminarBD = ['EliminarBD','RID','=','nueva','EliminarBD','(',comillas,'STRING',comillas,')',';']
