@@ -31,3 +31,5 @@ PROJECT ROOT/
 │
 └── README.md
 ```
+## Vista de la Interfaz Gráfica
+![image](./Manuales/Image/interfaz.jpg)
