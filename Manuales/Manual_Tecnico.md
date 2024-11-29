@@ -12,7 +12,7 @@ Lenguajes Formales y de programacion
 ---
 
 <center>Introducción</center><br>
-El proyecto consiste en la elaboración de una herramienta gráfica que permita el diseño y creación de sentencias de bases de datos no relacionales de una forma sencilla. La aplicación tiene un área de edición de código y un área de visualización de la sentencia final generada. Al tener ya las sentencias creadas inicialmente, se procederá a realizar la compilación respectiva lo que generará las sentencias de MongoDB que serán mostradas en el espacion de resultados que posteriormente se podrán aplicar a un entorno adecuado a MongoDB.
+El proyecto consiste en la elaboración de una herramienta gráfica que permita el diseño y creación de sentencias de bases de datos no relacionales de una forma sencilla. La aplicación tiene un área de edición de código y un área de visualización de la sentencia final generada. Al tener ya las sentencias creadas inicialmente, se procederá a realizar la compilación respectiva lo que generará las sentencias de MongoDB que serán mostradas en el espacio de resultados que posteriormente se podrán aplicar a un entorno adecuado a MongoDB.
 
 ---
 

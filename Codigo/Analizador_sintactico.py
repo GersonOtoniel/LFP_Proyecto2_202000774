@@ -25,7 +25,7 @@ class Sintactico:
 
     def Sintactico(self):
         i = 0
-        while i<self.compilar.lista.tamaño:
+        while i < self.compilar.lista.tamaño:
             char = self.compilar.lista.indexar(i)
             charsiguiente = self.compilar.lista.indexar(i+1)
             lexema = char.Lexema
